@@ -1,4 +1,4 @@
-# CSS as a Component
+# CSS via Components
 
 A single React component to inject CSS with ease.<br>
 It works with SSR (even using React 16's [renderToNodeStream](https://reactjs.org/docs/react-dom-server.html#rendertonodestream)) and client-side rendering out-of-the-box.
@@ -6,7 +6,7 @@ It works with SSR (even using React 16's [renderToNodeStream](https://reactjs.or
 <img alt="TravisCI" src="https://travis-ci.org/rofrischmann/react-css-component.svg?branch=master"> <a href="https://codeclimate.com/github/rofrischmann/react-css-component/coverage"><img alt="Test Coverage" src="https://codeclimate.com/github/rofrischmann/react-css-component/badges/coverage.svg"></a> <img alt="npm version" src="https://badge.fury.io/js/react-css-component.svg"> <img alt="npm downloads" src="https://img.shields.io/npm/dm/react-css-component.svg"> <img alt="dependencies" src="https://david-dm.org/rofrischmann/react-css-component.svg">
 
 ## Support Me
-If you're using [Robin Frischmann](https://rofrischmann.de)'s work, please consider supporting his [Open Source Projects](https://github.com/rofrischmann) on [**Patreon**](https://www.patreon.com/rofrischmann).
+If you're using [Robin Frischmann](https://rofrischmann.de)'s packages, please consider supporting his [Open Source Work](https://github.com/rofrischmann) on [**Patreon**](https://www.patreon.com/rofrischmann).
 
 ## Installation
 ```sh
@@ -16,7 +16,7 @@ yarn add react-css-component
 # npm
 npm i --save react-css-component
 ```
-It requires `react` and `prop-types` to be present.
+> **Caution**: It requires `react` and `prop-types` to be present.
 
 ## Why?
 This package is the result of a [tweet](https://twitter.com/kentcdodds/status/972268883339108352) by [Kent C. Dodds](https://twitter.com/kentcdodds).<br>
@@ -28,10 +28,10 @@ Alright, how about [CSS in JS](http://michelebertoli.github.io/css-in-js/)? Usin
 Depending on whether [universal rendering](#universalrendering) (server-side rendering with client-side rehydration) or [client-side only rendering](#clientrendering) is used, the implementation uses a different logic.
 
 ### Universal Rendering
-**Server Rendering**: The [UniversalStyle](#style) component renders a primitive *style* DOM element that uses `dangerouslySetInnerHTML` to inject a CSS string.
+**Server Rendering**: The [UniversalStyle](#style) component renders a primitive *style* DOM element that uses `dangerouslySetInnerHTML` to inject a CSS string.<br>
 **Client Rehydration**: At first, the [UniversalStyle](#style) component just gets rehydrated to match the server-side markup. But, as soon as it is about to unmount, the *style* element is copied to the `document.head` **once**. This will ensure it's existence just in case any other component using it's CSS is still visible.
 
-##### Caveat
+#### Caveat
 During server-side rendering, the [UniversalStyle](#style) component is not able to track it's own occurence, which may result in duplicate *style* elements. **This won't break anything, but also is not optimal**. To ensure that each [UniversalStyle](#style) instance is only rendered once, we need an unique cache on every render. This is achieved by passing a simple cache via React's context feature. Check the [StyleCacheProvider](#stylecacheprovider) component for more information.
 
 
