@@ -1,16 +1,12 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import { createElement, Component } from 'react'
 
 import { CONTEXT_NAMESPACE, ID_NAMESPACE } from '../utils/namespace'
 import appendStyle from '../utils/appendStyle'
 
 const idCache = {}
 
-export default class Style extends Component {
-  static contextTypes = {
-    [CONTEXT_NAMESPACE]: PropTypes.object,
-  }
-
+export default class UniversalStyle extends Component {
   constructor(props, context) {
     super(props, context)
 
@@ -49,9 +45,15 @@ export default class Style extends Component {
     // only actually render the style node
     // if its the first occurence
     if (this.isFirstOccurence) {
-      return <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
+      return createElement('style', {
+        dangerouslySetInnerHTML: { __html: this.props.css },
+      })
     }
 
     return null
   }
+}
+
+Style.contextTypes = {
+  [CONTEXT_NAMESPACE]: PropTypes.object,
 }
