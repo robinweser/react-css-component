@@ -40,6 +40,8 @@ During server-side rendering, the [UniversalStyle](#style) component is not able
 If we only render on the client-side anyways, we can skip that complex flow and just use the [ClientStyle](#style).<br>
 It simply injects a *style* element into the `document.head` on instantiation and tracks its occurence using a global cache.
 
+> **Note**: The [ClientStyle](#style) component won't throw with server-side rendering, but it simply doesn't render styles.
+
 ## Style
 Both `UniversalStyle` and `ClientStyle` share the exact same component API.<br>
 This component is the core component and is used to inject the CSS.
