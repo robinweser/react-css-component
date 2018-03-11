@@ -1,0 +1,64 @@
+{
+  "name": "react-css-component",
+  "version": "1.0.0",
+  "description": "Inject CSS with a Component",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/**",
+    "es/**"
+  ],
+  "keywords": [
+    "react",
+    "css",
+    "css-in-js",
+    "scoped-css",
+    "style",
+    "styling",
+    "scoped-style"
+  ],
+  "scripts": {
+    "build": "babel src -d es --ignore __tests__ && BABEL_ENV=commonjs babel src -d lib --ignore __tests__",
+    "clean": "rimraf es lib coverage",
+    "check": "yarn format && yarn lint",
+    "format": "prettier --write \"src/**/*.js\"",
+    "lint": "eslint src/**/*.js",
+    "release": "git pull --rebase && yarn setup && yarn run check && npm publish",
+    "test": "cross-env BABEL_ENV=commonjs jest",
+    "test:coverage": "cross-env BABEL_ENV=commonjs jest --coverage",
+    "watch": "yarn test -- --watch",
+    "setup": "yarn run clean && yarn build"
+  },
+  "repository": "https://github.com/rofrischmann/react-css-component.git",
+  "author": "Robin Frischmann <robin@rofrischmann.de>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "codeclimate-test-reporter": "^0.3.1",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.2",
+    "prettier": "^1.11.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "rimraf": "^2.6.2"
+  },
+  "peerDependencies": {
+    "prop-types": "*",
+    "react": "^16.0.0"
+  }
+}
