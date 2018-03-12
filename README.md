@@ -1,7 +1,8 @@
 # CSS via Components
 
 A single React component to inject CSS with ease.<br>
-It works with SSR (even using React 16's [renderToNodeStream](https://reactjs.org/docs/react-dom-server.html#rendertonodestream)) and client-side rendering out-of-the-box.
+It works with SSR (even using React 16's [renderToNodeStream](https://reactjs.org/docs/react-dom-server.html#rendertonodestream)) and client-side rendering out-of-the-box.<br>
+It also provides an *optional* optimisation path.
 
 <img alt="TravisCI" src="https://travis-ci.org/rofrischmann/react-css-component.svg?branch=master"> <a href="https://codeclimate.com/github/rofrischmann/react-css-component/coverage"><img alt="Test Coverage" src="https://codeclimate.com/github/rofrischmann/react-css-component/badges/coverage.svg"></a> <img alt="npm version" src="https://badge.fury.io/js/react-css-component.svg"> <img alt="npm downloads" src="https://img.shields.io/npm/dm/react-css-component.svg"> <img alt="dependencies" src="https://david-dm.org/rofrischmann/react-css-component.svg">
 
@@ -34,17 +35,21 @@ Depending on whether [universal rendering](#universalrendering) (server-side ren
 #### Caveat
 During server-side rendering, the [UniversalStyle](#style) component is not able to track it's own occurence, which may result in duplicate *style* elements. **This won't break anything, but also is not optimal**. To ensure that each [UniversalStyle](#style) instance is only rendered once, we need an unique cache on every render. This is achieved by passing a simple cache via React's context feature. Check the [StyleCacheProvider](#stylecacheprovider) component for more information.
 
-
-
 ### Client-Only Rendering
 If we only render on the client-side anyways, we can skip that complex flow and just use the [ClientStyle](#style).<br>
 It simply injects a *style* element into the `document.head` on instantiation and tracks its occurence using a global cache.
 
 > **Note**: The [ClientStyle](#style) component won't throw with server-side rendering, but it simply doesn't render styles.
 
+## When?
+It is important to point out, that this component does not fit for every use case.<br>
+It is especially built to be used for resuable shared components: If you're building a small React component and want to share it on npm, this is the perfect solution to add styling without having any additional setup on the user-side.<br>
+But, it should be used with caution when building applications. It does **not** solve common CSS problems such as specificity issues, global namespace conflicts or autoprefixing. Consider using a [CSS in JS library](http://michelebertoli.github.io/css-in-js/), [CSS Modules](https://github.com/css-modules/css-modules) or whatever tool is actually built with full applications in mind. 
+
+
 ## Style
-Both `UniversalStyle` and `ClientStyle` share the exact same component API.<br>
-This component is the core component and is used to inject the CSS.
+This component is the core component and is used to inject the CSS.<br>
+Both the universal and the client-only version share the exact same API.
 
 ### Props
 
