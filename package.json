@@ -23,7 +23,7 @@
   "scripts": {
     "build": "babel src -d es --ignore __tests__ && BABEL_ENV=commonjs babel src -d lib --ignore __tests__",
     "clean": "rimraf es lib coverage",
-    "check": "yarn format && yarn lint && yarn test",
+    "check": "yarn format && yarn lint && yarn test:coverage",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src/**/*.js",
     "release": "git pull --rebase && yarn setup && yarn run check && npm publish",
