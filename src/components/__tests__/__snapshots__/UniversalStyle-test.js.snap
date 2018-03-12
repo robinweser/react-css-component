@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UniversalComponent Component should move each different style to the document.head if the component unmounts 1`] = `"<style>.class1 { color: red } .class2 { color: blue }</style><style>.class3 { color: green }</style>"`;
+
+exports[`UniversalComponent Component should move the style to the document.head if the component unmounts 1`] = `"<style>.class1 { color: red } .class2 { color: blue }</style>"`;
+
+exports[`UniversalComponent Component should only move the style once to the document.head 1`] = `"<style>.class1 { color: red } .class2 { color: blue }</style><style>.class1 { color: red } .class2 { color: blue }</style>"`;
+
+exports[`UniversalComponent Component should render a style element on the client 1`] = `"<style>.class1 { color: red } .class2 { color: blue }</style>"`;
+
+exports[`UniversalComponent Component should render a style element on the server 1`] = `"<style data-reactroot=\\"\\">.class1 { color: red } .class2 { color: blue }</style>"`;

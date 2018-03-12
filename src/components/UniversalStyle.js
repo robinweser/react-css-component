@@ -54,6 +54,6 @@ export default class UniversalStyle extends Component {
   }
 }
 
-Style.contextTypes = {
+UniversalStyle.contextTypes = {
   [CONTEXT_NAMESPACE]: PropTypes.object,
 }

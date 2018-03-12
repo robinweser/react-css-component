@@ -19,6 +19,7 @@ export default class StyleCacheProvider extends Component {
     return this.props.children
   }
 }
+
 StyleCacheProvider.childContextTypes = {
   [CONTEXT_NAMESPACE]: PropTypes.object,
 }

@@ -5,7 +5,7 @@ script:
   - npm run check
 addons:
   code_climate:
-    repo_token: 7b36993e94e8f045924171a92cb833c7097d5a49c98e1905a13964792c25192e
+    repo_token: b9b1d75d35a4a0abd6cefa9934564d22166b2ff346af0730d20dc70c92af5da8
 before_script:
   - npm run setup
 after_script:
